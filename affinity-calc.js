@@ -27,8 +27,7 @@ function cpuCheck_event() {
     document.getElementById("mask_hex").value = "0x" + long2hex(mask_high).toUpperCase() + long2hex(mask_low).toUpperCase();
 }
 
-function mark_cpus_16bit(word, iBegin) {
-    console.log("word " + word + " at index " + iBegin);
+function mark_cpus_16bit(word, iBegin) {    
     word=parseInt(word, 16);
     for(i=0; i<16; i++) {        
         $cpuElem=document.getElementById("cpu" + (iBegin+i));
@@ -40,8 +39,6 @@ function cpuMask_event() {
     mask=pad0(document.getElementById("mask_hex").value.toUpperCase().replace("0X",""),16);
     mask_high=mask.substr(0,8);
     mask_low=mask.substr(8,8);
-
-    console.log("mask low " + mask_low + " high " + mask_high);
 
     mark_cpus_16bit(mask_low.substr(4,4), 0);
     mark_cpus_16bit(mask_low.substr(0,4), 16);
