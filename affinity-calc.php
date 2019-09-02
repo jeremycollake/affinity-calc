@@ -22,5 +22,4 @@ function cpu_affinity_calculator($atts) {
 	$ret.="<label for=\"mask_hex\">CPU Affinity Bitmask (hex):</label> <input type=\"text\" size=\"26\" id=\"mask_hex\" name=\"mask_hex\" onchange=\"cpuMask_event()\">";
 	return $ret;
 }
-
 ?>

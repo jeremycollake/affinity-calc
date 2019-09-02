@@ -1,9 +1,9 @@
-function pad0(num, size) { 
+function pad0(num, width) { 
     var zeros;
-    for(i=0;i<size;i++) {
+    for(i=0;i<width;i++) {
         zeros+="0";
     }
-    return (zeros + num).substr(-size); 
+    return (zeros + num).substr(-width); 
 }
 
 function long2hex (num) {
