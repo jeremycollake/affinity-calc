@@ -1,16 +1,14 @@
-function pad2(num, size) { 
-    return ('00' + num).substr(-size); 
-}
-
-function pad16(num, size) { 
-    return ('0000000000000000' + num).substr(-size); 
+function pad0(num, size) { 
+    var zeros;
+    for(i=0;i<size;i++) zeros+="0";
+    return (zeros + num).substr(-size); 
 }
 
 function long2hex (num) {
-    return ( pad2((num>>>24).toString(16),2) +
-    pad2((num>>16 & 255).toString(16),2) +
-    pad2((num>>8 & 255).toString(16),2) +
-    pad2((num & 255).toString(16),2) );
+    return ( pad0((num>>>24).toString(16),2) +
+    pad0((num>>16 & 255).toString(16),2) +
+    pad0((num>>8 & 255).toString(16),2) +
+    pad0((num & 255).toString(16),2) );
 }
 
 function cpuCheck_event() {
@@ -39,7 +37,7 @@ function mark_cpus_16bit(word, iBegin) {
 }
 
 function cpuMask_event() {
-    mask=pad16(document.getElementById("mask_hex").value.toUpperCase().replace("0X",""),16);
+    mask=pad0(document.getElementById("mask_hex").value.toUpperCase().replace("0X",""),16);
     mask_high=mask.substr(0,8);
     mask_low=mask.substr(8,8);
 
