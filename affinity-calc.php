@@ -5,7 +5,7 @@ function cpu_affinity_calculator($atts) {
 	
 	$dir=str_replace($_SERVER['DOCUMENT_ROOT'], "", __DIR__);
     echo "<script src=\"$dir/affinity-calc.js\" type=\"text/javascript\"></script>";
-	$table="<table><tr>";
+	$table="<table>";
 
 	for($cur_row=0;$cur_row<$rows;$cur_row++) {
 		$table.="<tr>";
@@ -15,9 +15,8 @@ function cpu_affinity_calculator($atts) {
 		}
 		$table.="</tr>";
 	}
-	$table.="</table>";
-	echo $table;
-	echo "<label for=\"mask_hex\">CPU Affinity Bitmask (hex):</label> <input type=\"text\" size=\"26\" id=\"mask_hex\" name=\"mask_hex\" onchange=\"cpuMask_event()\">";
+	$table.="</table>";	
+	return $table . "<label for=\"mask_hex\">CPU Affinity Bitmask (hex):</label> <input type=\"text\" size=\"26\" id=\"mask_hex\" name=\"mask_hex\" onchange=\"cpuMask_event()\">";
 }
 
 ?>
