@@ -15,7 +15,10 @@ function cpu_affinity_calculator($atts) {
 		}
 		$ret.="</tr>";
 	}
-	$ret.="</table>";
+	$ret.="</table>";	
+	$ret.="<input type=\"button\" value=\"invert\" id=\"btnInvert\" onclick=\"invert_event()\">";
+	$ret.="<input type=\"button\" value=\"clear\" id=\"btnClear\" onclick=\"clear_event()\">";
+	$ret.="<br />";
 	$ret.="<label for=\"mask_hex\">CPU Affinity Bitmask (hex):</label> <input type=\"text\" size=\"26\" id=\"mask_hex\" name=\"mask_hex\" onchange=\"cpuMask_event()\">";
 	return $ret;
 }

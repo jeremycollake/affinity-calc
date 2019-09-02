@@ -1,6 +1,8 @@
 function pad0(num, size) { 
     var zeros;
-    for(i=0;i<size;i++) zeros+="0";
+    for(i=0;i<size;i++) {
+        zeros+="0";
+    }
     return (zeros + num).substr(-size); 
 }
 
@@ -44,4 +46,20 @@ function cpuMask_event() {
     mark_cpus_16bit(mask_low.substr(0,4), 16);
     mark_cpus_16bit(mask_high.substr(4,4), 32);
     mark_cpus_16bit(mask_high.substr(0,4), 48);
+}
+
+function invert_event() {    
+    var cpus=document.getElementsByClassName("cpu_selector");    
+    for(var i=0;i<cpus.length;i++) {
+        cpus[i].checked=!cpus[i].checked;
+    }
+    cpuCheck_event();
+}
+
+function clear_event() {
+    var cpus=document.getElementsByClassName("cpu_selector");
+    for(var i=0;i<cpus.length;i++) {
+        cpus[i].checked=false;
+    }
+    cpuCheck_event();
 }
