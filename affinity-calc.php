@@ -4,7 +4,7 @@ function cpu_affinity_calculator($atts) {
 	$rows = shortcode_atts(array('rows' => '8',), $atts)["rows"];
 
 	$dir = str_replace($_SERVER['DOCUMENT_ROOT'], "", __DIR__);
-	$ret = "<script src=\"$dir/affinity-calc.js\" type=\"text/javascript\"></script>"
+	$ret = "<script src=\"$dir/affinity-calc.js?ver=09072021000\" type=\"text/javascript\"></script>"
 		. "<table class=\"table table-striped\">";
 
 	for($cur_row=0;$cur_row<$rows;$cur_row++) {
