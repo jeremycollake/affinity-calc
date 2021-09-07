@@ -11,7 +11,7 @@ function cpu_affinity_calculator($atts) {
 		$ret .= "<tr>";
 		for($cur_col=0;$cur_col<(64/$rows);$cur_col++) {
 			$cpu = ($cur_col*$rows)+$cur_row;
-			$ret .= sprintf("<td><input type=\"checkbox\" id=\"cpu%d\" name=\"cpu%d\" onclick=\"cpuCheck_event()\" class=\"cpu_selector\"> <label for=\"cpu%d\">CPU %d</label></td>", $cpu, $cpu, $cpu, $cpu);
+			$ret .= sprintf("<td><input type=\"checkbox\" id=\"cpu%d\" name=\"cpu%d\" onclick=\"cpuCheck_event()\" class=\"cpu-checkbox\"> <label for=\"cpu%d\">CPU %d</label></td>", $cpu, $cpu, $cpu, $cpu);
 		}
 		$ret .= "</tr>";
 	}
@@ -19,7 +19,7 @@ function cpu_affinity_calculator($atts) {
 		. "<input type=\"button\" value=\"invert\" id=\"btnInvert\" onclick=\"invert_event()\">"
 		. "<input type=\"button\" value=\"clear\" id=\"btnClear\" onclick=\"clear_event()\">"
 		. "<br />"
-		. "<label for=\"mask_hex\">CPU Affinity Bitmask (hex):</label> <input type=\"text\" size=\"26\" id=\"mask_hex\" name=\"mask_hex\" onchange=\"cpuMask_event()\">";
+		. "<label for=\"mask-hex\">CPU Affinity Bitmask (hex):</label> <input type=\"text\" size=\"26\" id=\"mask-hex\" name=\"mask-hex\" onchange=\"cpuMask_event()\">";
 	return $ret;
 }
 ?>

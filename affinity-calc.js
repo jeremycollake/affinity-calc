@@ -1,6 +1,6 @@
 function pad0(num, width) {
-    var zeros;
-    for (i = 0; i < width; i++) {
+    let zeros;
+    for (let i = 0; i < width; i++) {
         zeros += "0";
     }
     return (zeros + num).substr(-width);
@@ -14,52 +14,50 @@ function long2hex(num) {
 }
 
 function cpuCheck_event() {
-    var mask_low = 0;
-    var mask_high = 0;
-    for (i = 0; i < 32; i++) {
+    let maskLow = 0;
+    let maskHigh = 0;
+    for (let i = 0; i < 32; i++) {
         if (document.getElementById("cpu" + i).checked) {
-            mask_low |= (1 << i);
+            maskLow |= (1 << i);
         }
     }
-    for (i = 32; i < 64; i++) {
+    for (let i = 32; i < 64; i++) {
         if (document.getElementById("cpu" + i).checked) {
-            mask_high |= (1 << i);
+            maskHigh |= (1 << i);
         }
     }
-    document.getElementById("mask_hex").value = "0x" + long2hex(mask_high).toUpperCase() + long2hex(mask_low).toUpperCase();
+    document.getElementById("mask-hex").value = "0x" + long2hex(maskHigh).toUpperCase() + long2hex(maskLow).toUpperCase();
 }
 
 function mark_cpus_16bit(word, iBegin) {
     word = parseInt(word, 16);
-    for (i = 0; i < 16; i++) {
+    for (let i = 0; i < 16; i++) {
         $cpuElem = document.getElementById("cpu" + (iBegin + i));
         $cpuElem.checked = (word >>> i) & 1;
     }
 }
 
 function cpuMask_event() {
-    mask = pad0(document.getElementById("mask_hex").value.toUpperCase().replace("0X", ""), 16);
-    mask_high = mask.substr(0, 8);
-    mask_low = mask.substr(8, 8);
+    let mask = pad0(document.getElementById("mask-hex").value.toUpperCase().replace("0X", ""), 16);
+    let maskHigh = mask.substr(0, 8);
+    let maskLow = mask.substr(8, 8);
 
-    mark_cpus_16bit(mask_low.substr(4, 4), 0);
-    mark_cpus_16bit(mask_low.substr(0, 4), 16);
-    mark_cpus_16bit(mask_high.substr(4, 4), 32);
-    mark_cpus_16bit(mask_high.substr(0, 4), 48);
+    mark_cpus_16bit(maskLow.substr(4, 4), 0);
+    mark_cpus_16bit(maskLow.substr(0, 4), 16);
+    mark_cpus_16bit(maskHigh.substr(4, 4), 32);
+    mark_cpus_16bit(maskHigh.substr(0, 4), 48);
 }
 
 function invert_event() {
-    var cpus = document.getElementsByClassName("cpu_selector");
-    for (var i = 0; i < cpus.length; i++) {
-        cpus[i].checked = !cpus[i].checked;
+    for (const cpu of document.getElementsByClassName("cpu-checkbox")) {
+        cpu.checked = !cpu.checked;
     }
     cpuCheck_event();
 }
 
 function clear_event() {
-    var cpus = document.getElementsByClassName("cpu_selector");
-    for (var i = 0; i < cpus.length; i++) {
-        cpus[i].checked = false;
+    for (const cpu of document.getElementsByClassName("cpu-checkbox")) {
+        cpu.checked = false;
     }
     cpuCheck_event();
 }
