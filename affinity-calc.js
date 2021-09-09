@@ -17,8 +17,10 @@ class AffinityCalc {
     static mark_cpus_16bit(word, iBegin) {
         word = parseInt(word, 16);
         for (let i = 0; i < 16; i++) {
-            $cpuElem = document.getElementById("cpu" + (iBegin + i));
-            $cpuElem.checked = (word >>> i) & 1;
+            let $cpuElem = document.getElementById("cpu" + (iBegin + i));
+            if ($cpuElem) {
+                $cpuElem.checked = (word >>> i) & 1;
+            }
         }
     }
 
