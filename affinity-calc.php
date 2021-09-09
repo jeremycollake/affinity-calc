@@ -3,10 +3,11 @@ function cpu_affinity_calculator($atts) {
 	$atts = array_change_key_case((array)$atts, CASE_LOWER);
 	$rows = shortcode_atts(array('rows' => '8',), $atts)["rows"];
 
+	$scriptver = '09092021001'; // cache buster
 	$dir = str_replace($_SERVER['DOCUMENT_ROOT'], "", __DIR__);
-	$ret = "<script src=\"$dir/affinity-calc.js?ver=09092021000\" type=\"text/javascript\"></script>"
-		. "<table class=\"table table-striped\">";
+	wp_enqueue_script('affinity-calc',"$dir/affinity-calc.js",'',$scriptver);
 
+	$ret = "<table class=\"table table-striped\">";
 	for($cur_row=0;$cur_row<$rows;$cur_row++) {
 		$ret .= "<tr>";
 		for($cur_col=0;$cur_col<(64/$rows);$cur_col++) {
