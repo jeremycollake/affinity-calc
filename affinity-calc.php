@@ -4,7 +4,7 @@
 // affinity-calc.js does the math and affinity-calc.css the styling.
 // The old rows="N" attribute is still accepted; the grid now flows 8 processors per row.
 
-define( 'AFFINITY_CALC_VER', '2026101501' ); // cache buster for the JS and CSS
+define( 'AFFINITY_CALC_VER', '2026101502' ); // cache buster for the JS and CSS
 
 function affinity_calc_enqueue() {
 	wp_enqueue_style( 'affinity-calc', plugins_url( 'affinity-calc.css', __FILE__ ), array(), AFFINITY_CALC_VER );
